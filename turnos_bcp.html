@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCP - Solicitar Turno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        h1 {
+            color: #003f77;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #003f77;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #002a54;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solicita tu Turno - BCP</h1>
+    <form id="turnoForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" placeholder="Ingresa tu nombre" required>
+        
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" placeholder="Ingresa tu DNI" required>
+        
+        <label for="motivo">Motivo de la consulta:</label>
+        <select id="motivo" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Apertura de cuenta">Apertura de cuenta</option>
+            <option value="Consulta de saldo">Consulta de saldo</option>
+            <option value="Préstamos">Préstamos</option>
+            <option value="Otros">Otros</option>
+        </select>
+        
+        <button type="submit">Solicitar Turno</button>
+    </form>
+    
+    <p id="mensaje" style="margin-top: 20px; color: green;"></p>
+    
+    <script>
+        const form = document.getElementById('turnoForm');
+        const mensaje = document.getElementById('mensaje');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const dni = document.getElementById('dni').value;
+            const motivo = document.getElementById('motivo').value;
+            
+            // Generar un mensaje de confirmación
+            mensaje.textContent = `¡Gracias, ${nombre}! Tu turno para "${motivo}" ha sido registrado.`;
+            
+            // Limpia el formulario
+            form.reset();
+        });
+    </script>
+</body>
+</html>
